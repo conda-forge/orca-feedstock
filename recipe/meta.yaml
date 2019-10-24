@@ -1,6 +1,6 @@
 {% set name = "orca" %}
-{% set version = "1.5.1" %}
-{% set sha256 = "a69b1c1e080fbddb69d38817b7441c2b626a43b009ef76830dcf21364e7fb140" %}
+{% set version = "1.5.3" %}
+{% set sha256 = "87b5db8318b2f6dc788449bce7c593d681e4d8db74cc4498f095b382c205b321" %}
 
 package:
   name: {{ name|lower }}
@@ -13,8 +13,8 @@ source:
 
 build:
   noarch: python
-  number: 1
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - orca-server = orca.server.server:main
 
