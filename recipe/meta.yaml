@@ -42,7 +42,7 @@ about:
   home: http://github.com/udst/orca
   license: BSD-3-Clause
   license_family: BSD
-  license_file: LICENSE
+  license_file: LICENSE.txt
   summary: 'A pipeline orchestration tool with Pandas support'
   description: |
     Orca is a pipeline orchestration tool that allows you to define dynamic
