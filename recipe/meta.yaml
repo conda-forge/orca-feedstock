@@ -1,36 +1,33 @@
-{% set name = "orca" %}
-{% set version = "1.5.1" %}
-{% set sha256 = "a69b1c1e080fbddb69d38817b7441c2b626a43b009ef76830dcf21364e7fb140" %}
+{% set version = "1.5.3" %}
+{% set sha256 = "ed1d7d12bff3e7120c5252374833150e58b840eb0c51d875e69cd95df6811e86" %}
 
 package:
-  name: {{ name|lower }}
+  name: orca
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/UDST/{{ name }}/archive/v{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/o/orca/orca-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   noarch: python
-  number: 1
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - orca-server = orca.server.server:main
 
 requirements:
   host:
-    - pip
     - python
-    - setuptools
+    - pip
   run:
     - python
-    - pandas >=0.15.0
-    - pytables >=3.1.0
-    - toolz >=0.8.1
-    - pygments >=2.0
     - flask >=0.10
+    - pandas >=0.15.0
+    - pygments >=2.0
+    - pytables >=3.1.0
     - six >=1.9.0
+    - toolz >=0.8.1
 
 test:
   imports:
@@ -57,4 +54,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - pksohn
+    - smmaurer
