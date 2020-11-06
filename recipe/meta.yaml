@@ -1,5 +1,5 @@
-{% set version = "1.5.3" %}
-{% set sha256 = "ed1d7d12bff3e7120c5252374833150e58b840eb0c51d875e69cd95df6811e86" %}
+{% set version = "1.5.4" %}
+{% set sha256 = "b82f5beb7933cfadfdae75c0d7b9987af8534f92f538cfd7f824be47ac320cb1" %}
 
 package:
   name: orca
@@ -43,15 +43,15 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  summary: 'A pipeline orchestration tool with Pandas support'
+  summary: 'Python library for task orchestration'
   description: |
-    Orca is a pipeline orchestration tool that allows you to define dynamic
-    data sources and explicitly connect them to processing functions. Orca has
-    many features for working with Pandas data structures, but it can be used
-    with anything.
+    Orca is a Python library for task orchestration. It's designed for
+    workflows like city simulation, where the data representing a model's
+    state is so large that it needs to be managed outside of the task graph.
   doc_url: https://udst.github.io/orca/
   dev_url: http://github.com/udst/orca
 
 extra:
   recipe-maintainers:
     - smmaurer
+    - sablanchard
