@@ -1,5 +1,5 @@
-{% set version = "1.5.4" %}
-{% set sha256 = "b82f5beb7933cfadfdae75c0d7b9987af8534f92f538cfd7f824be47ac320cb1" %}
+{% set version = "1.6" %}
+{% set sha256 = "083d85245b8bb8cc346e16f7f00e4bdf786139a618cca3a229d61cfcaf2ef944" %}
 
 package:
   name: orca
@@ -12,16 +12,16 @@ source:
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - orca-server = orca.server.server:main
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
-    - python
+    - python >=3.6
     - flask >=0.10
     - pandas >=0.15.0
     - pygments >=2.0
@@ -43,7 +43,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  summary: 'Python library for task orchestration'
+  summary: Python library for task orchestration
   description: |
     Orca is a Python library for task orchestration. It's designed for
     workflows like city simulation, where the data representing a model's
