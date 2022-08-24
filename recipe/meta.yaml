@@ -1,5 +1,5 @@
-{% set version = "1.6" %}
-{% set sha256 = "083d85245b8bb8cc346e16f7f00e4bdf786139a618cca3a229d61cfcaf2ef944" %}
+{% set version = "1.7" %}
+{% set sha256 = "1886d6fa1e72cd23be94ac68917cbe11807f4918ceb1a687d460ae1b5f813d57" %}
 
 package:
   name: orca
