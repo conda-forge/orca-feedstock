@@ -1,35 +1,50 @@
+{% set name = "orca" %}
 {% set version = "1.9" %}
 {% set sha256 = "34fd702129e9291dd8c2e024e61c5908174abe187b3f1b50a714bcc6c58b4720" %}
+{% set python_min = "3.10" %}
 
 package:
-  name: orca
-  version: {{ version }}
+  name: {{ name|lower }}
+  version: "{{ version }}"
 
 source:
-  url: https://pypi.io/packages/source/o/orca/orca-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
+    - setuptools >=77
   run:
-    - python >=3.6
-    - pandas >=0.15.0
-    - pytables >=3.1.0
-    - toolz >=0.8.1
+    - python >={{ python_min }}
+    - numpy >=1.21
+    - pandas >=1.5,<4
+    - pytables >=3.8
+    - toolz >=0.12
 
 test:
+  source_files:
+    - orca
+    - pyproject.toml
   imports:
     - orca
+    - orca.utils
+  requires:
+    - python {{ python_min }}
+    - pip
+    - pytest
+  commands:
+    - pip check
+    - pytest orca -q
 
 about:
-  home: http://github.com/udst/orca
+  home: https://github.com/UDST/orca
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
@@ -38,8 +53,9 @@ about:
     Orca is a Python library for task orchestration. It's designed for
     workflows like city simulation, where the data representing a model's
     state is so large that it needs to be managed outside of the task graph.
+    It's part of the Urban Data Science Toolkit (UDST).
   doc_url: https://udst.github.io/orca/
-  dev_url: http://github.com/udst/orca
+  dev_url: https://github.com/UDST/orca
 
 extra:
   recipe-maintainers:
